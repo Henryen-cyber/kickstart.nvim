@@ -589,7 +589,10 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        svls = {},
+        svls = {
+          cmd = { 'svls' },
+          filetypes = { 'systemverilog', 'verilog' },
+        },
         clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -774,6 +777,8 @@ require('lazy').setup({
 
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        systemverilog = { 'snippets', 'buffer', 'path' },
+        verilog = { 'snippets', 'buffer', 'path' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
